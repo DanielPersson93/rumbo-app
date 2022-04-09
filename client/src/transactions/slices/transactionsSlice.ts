@@ -107,7 +107,7 @@ const transactionsSlice = createSlice({
   reducers: {
     // standard reducer logic, with auto-generated action types per reducer
     setFilter(state, action: PayloadAction<DateFilter>) {
-      
+
       const year: number = action.payload.year;
       console.log(state.meta[year].indexOf(action.payload.month));
       //If you change to year where previous month is not available, set max possible month that year

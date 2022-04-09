@@ -34,14 +34,15 @@ export const TimespanSelector = ({
 }: TimespanSelectorProps) => {
 
   const years = Object.keys(yearMonths);
+
   // TODO - currentYear skall inte vara hårdkodat..
   const currentYear = 2021;
-  
+
   // TODO - varför har vi hårdkodat 2021 här ?? 
   const months = yearMonths[filter.year] ?? yearMonths[currentYear];
-  
+
   const selectedYear = filter.year ?? currentYear;
-  
+
   const selectedMonth = filter.month ?? 0;
   const selectedMonthIndex = months.indexOf(selectedMonth); //TODO: Har kraschat här
 

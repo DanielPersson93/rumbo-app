@@ -78,24 +78,24 @@ const appSlice = createSlice({
     [fetchAllProjects.fulfilled]: (state, action) => {
 
       //DOING 
-    //   let group = action.payload.reduce((projects: any, project: any) => {
-    //     console.log("project", project);
-    //     console.log('projects', projects);
-    //     projects[project.project_name] = [...projects[project.project_name] || [], project];
-    //     console.log("I projects arrayen ", projects);
-    //     return projects;
-    //     }, {});
+      // let group = action.payload.reduce((projects: any, project: any) => {
+      //   console.log("project", project);
+      //   console.log('projects', projects);
+      //   projects[project.project_name] = [...projects[project.project_name] || [], project];
+      //   console.log("I projects arrayen ", projects);
+      //   return projects;
+      // }, {});
 
-    //  console.log("loggar group: ", group);
-     
-    //   group.filter()
-    //   // Hämtar ut all data för projekt 1
-    //   const firstProject = action.payload.filter((project :any) => project.project_id === 1);
+      // console.log("loggar group: ", group);
 
-    //   // Hämtar ut alla anställda för projekt 1
-    //   const employeesInFirstProject = firstProject.map(((project: any) => project.employee_id));
-    //   console.log("loggar project 1s anställda: ", employeesInFirstProject);
-      
+      // group.filter()
+      // // Hämtar ut all data för projekt 1
+      // const firstProject = action.payload.filter((project: any) => project.project_id === 1);
+
+      // // Hämtar ut alla anställda för projekt 1
+      // const employeesInFirstProject = firstProject.map(((project: any) => project.employee_id));
+      // console.log("loggar project 1s anställda: ", employeesInFirstProject);
+
       state.projects = action.payload;
     }
   },

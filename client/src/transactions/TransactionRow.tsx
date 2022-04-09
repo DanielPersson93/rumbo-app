@@ -1,5 +1,5 @@
 import { useState, } from "react";
-import { Table, Button, IconButton, TrashIcon, CrossIcon, majorScale, MoreIcon} from "evergreen-ui";
+import { Table, Button, IconButton, TrashIcon, CrossIcon, majorScale, MoreIcon } from "evergreen-ui";
 import { Transaction } from "../types";
 import styled from "styled-components";
 import dateformat from "dateformat";
@@ -42,15 +42,15 @@ const TransactionRow = ({
 
   const renderMoreMenu = () => (
     <>
-    <IconButton icon={TrashIcon} intent="danger" marginLeft={majorScale(1)} onClick={() => { setShowConfirmDelete(true); setShowMoreMenu(false); }} />
-    <IconButton icon={CrossIcon} intent="none" marginLeft={majorScale(1)} onClick={() => { setShowMoreMenu(false); }} />
+      <IconButton icon={TrashIcon} intent="danger" marginLeft={majorScale(1)} onClick={() => { setShowConfirmDelete(true); setShowMoreMenu(false); }} />
+      <IconButton icon={CrossIcon} intent="none" marginLeft={majorScale(1)} onClick={() => { setShowMoreMenu(false); }} />
     </>
   )
 
   const renderConfirmDelete = () => (
     <>
-      <Button intent="danger" onClick={() => onRemove(transaction)}>Ta bort</Button>      
-      <Button marginLeft={majorScale(1)} intent="none" onClick={() => setShowConfirmDelete(false) }>Ångra</Button>
+      <Button intent="danger" onClick={() => onRemove(transaction)}>Ta bort</Button>
+      <Button marginLeft={majorScale(1)} intent="none" onClick={() => setShowConfirmDelete(false)}>Ångra</Button>
     </>
   )
 
@@ -58,7 +58,7 @@ const TransactionRow = ({
     <StyledTableRow
       key={transaction.id}
     >
-      { !isMobile && (
+      {!isMobile && (
         <>
           <Table.TextCell maxWidth="125px">
             {dateformat(transaction.time, "yyyy-mm-dd")}
@@ -66,7 +66,7 @@ const TransactionRow = ({
           <Table.TextCell>{transaction.description}</Table.TextCell>
         </>
       )}
-      { isMobile && (
+      {isMobile && (
         <>
           <Table.TextCell>
             <p>
@@ -77,7 +77,7 @@ const TransactionRow = ({
           </Table.TextCell>
         </>
       )}
-      { <><Table.TextCell isNumber>
+      {<><Table.TextCell isNumber>
         {new Intl.NumberFormat("sv-SE").format(Math.round(transaction.amount))}
       </Table.TextCell>
         <Table.TextCell isNumber>

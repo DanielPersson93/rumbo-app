@@ -1,7 +1,8 @@
-const getDescriptionsByEmail = (jwtToken: string, email: string) => {
-  return fetch(`${process.env.REACT_APP_API_BASE_URL}/user/${email}/description`, {
+const getDescriptionsByEmail = async (jwtToken: string, email: string) => {
+  const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/user/${email}/description`, {
     headers: { authorization: `bearer ${jwtToken}` },
-  }).then((res: any) => res.json());
+  });
+  return res.json();
 };
 
 export default getDescriptionsByEmail;

@@ -59,7 +59,7 @@ const PreliminaryTransactionRow = ({
     <StyledTableRow
       key={transaction.id}
     >
-      { !isMobile && (
+      {!isMobile && (
         <>
           <Table.TextCell maxWidth="125px">
             {dateformat(transaction.time, "yyyy-mm-dd")}
@@ -67,7 +67,7 @@ const PreliminaryTransactionRow = ({
           <Table.TextCell>{transaction.description}</Table.TextCell>
         </>
       )}
-      { isMobile && (
+      {isMobile && (
         <>
           <Table.TextCell>
             <p>
@@ -78,11 +78,11 @@ const PreliminaryTransactionRow = ({
           </Table.TextCell>
         </>
       )}
-      { <><Table.TextCell isNumber>
+      {<><Table.TextCell isNumber>
         {new Intl.NumberFormat("sv-SE").format(Math.round(transaction.amount))}
       </Table.TextCell>
         <Table.TextCell isNumber>
-          
+
         </Table.TextCell>
         <Table.Cell justifyContent="right" width="10px">
           {

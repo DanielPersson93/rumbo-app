@@ -1,5 +1,5 @@
 import { fetchFromVisma } from "./index";
-import { Transaction, TransactionStatus } from "../types";
+import { Transaction, TransactionStatus } from "../models/transaction.model";
 
 const getAmountFromVoucherRow = (row: any) => row.DebitAmount > 0 ? row.DebitAmount : -row.CreditAmount;
 

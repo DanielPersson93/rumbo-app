@@ -57,7 +57,7 @@ const TransactionsView = ({ jwtToken, user, isAdmin }: TransactionsViewType) => 
   }, [dispatch, user]);
 
   const renderButtons = () => isAdmin && <>
-    { process.env.REACT_APP_VISMA_IMPORT_FEATURE === 'true' && <Button height={32} appearance="primary" intent="none" onClick={() => dispatch(importFromVisma({ user, filter }))} marginRight={10}>Importera från Visma</Button>}
+    {process.env.REACT_APP_VISMA_IMPORT_FEATURE === 'true' && <Button height={32} appearance="primary" intent="none" onClick={() => dispatch(importFromVisma({ user, filter }))} marginRight={10}>Importera från Visma</Button>}
     <Button height={32} appearance="primary" intent="success" onClick={() => showAddNew()}>Lägg till</Button>
   </>;
 

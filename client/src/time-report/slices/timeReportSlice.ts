@@ -64,7 +64,7 @@ export const saveUpdatedTimeReport: any = createAsyncThunk<any, TimeReport>(
   "timereport/update",
   async (timeReport: any, thunkAPI) => {
     const state: any = thunkAPI.getState();
-    const response = await updateTimeReport(state.authentication.jwtIdToken, {...timeReport, time: timeReport.time.toDateString()}
+    const response = await updateTimeReport(state.authentication.jwtIdToken, { ...timeReport, time: timeReport.time.toDateString() }
     );
     console.log("Vi har hamnat i slicen ", timeReport);
     return response;
@@ -109,11 +109,11 @@ const timeReportSlice = createSlice({
   reducers: {
     // standard reducer logic, with auto-generated action types per reducer
     setFilter(state, action: PayloadAction<DateFilter>) {
-
       const year: number = action.payload.year;
       //If you change to year where previous month is not available, set max possible month that year
-      const month = action.payload.month === 0 ? 0 : state.meta[year].indexOf(action.payload.month) > -1 ? action.payload.month : Math.max(...state.meta[year]);
-      state.filter = { year, month };
+      // const month = action.payload.month === 0 ? 0 : state.meta[year].indexOf(action.payload.month) > -1 ? action.payload.month : Math.max(...state.meta[year]);
+      // console.log({ year, month });
+      state.filter = { year, month: action.payload.month };
     },
 
     toggleSort(state) {
@@ -155,10 +155,10 @@ const timeReportSlice = createSlice({
   extraReducers: {
     // Add reducers for additional action types here, and handle loading state as needed
     [fetchTimeReportsByUser.fulfilled]: (state, action) => {
-      
+
       state.entities = action.payload.map((timeReport: any) => ({ ...timeReport, time: new Date(timeReport.time) }));
       state.loading = "complete";
-      
+
     },
     [fetchTimeReportsByUser.pending]: (state, action) => {
       state.loading = "loading";

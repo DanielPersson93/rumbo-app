@@ -94,14 +94,14 @@ const EditTransactionRow = ({
             }
           />
         </Table.Cell>
-        <Table.Cell  overflowY="visible" overflowX="visible">
+        <Table.Cell overflowY="visible" overflowX="visible">
           <Autocomplete
             value={transaction.description}
-            setValue={(newValue) => updateTransaction({...transaction, description: newValue })}
-            options={items}/>
+            setValue={(newValue) => updateTransaction({ ...transaction, description: newValue })}
+            options={items} />
         </Table.Cell>
         <Table.Cell>
-        <TextInput
+          <TextInput
             isInvalid={!isAmountValid}
             type="number"
             width="100%"

@@ -2,7 +2,9 @@
 import { useEffect } from "react";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { Employee, Project } from "../app/slices/appSlice";
+import { Project, Employee } from "../app/slices/appSlice";
+// import { Project } from '../../../server/src/models/project.model'
+// import { Employee } from '../../../server/src/models/employee.model'
 import { TimespanSelector } from "../common/TimespanSelector";
 import { ViewWrapper } from "../common/ViewWrapper";
 import timeReportSlice, { fetchTimeReportsByProject } from "../time-report/slices/timeReportSlice";
@@ -37,16 +39,16 @@ const ProjectView = ({ user }: ProjectViewType) => {
   }, [filter, user]);
 
   return (
-    <>{ project ?
-    <ViewWrapper title={project.project_name}>
-      {<TimespanSelector onChange={(newFilter: DateFilter) =>
-        dispatch(timeReportSlice.actions.setFilter(newFilter))
-      }
-        yearMonths={timeReportMeta}
-        filter={filter}
-      />}
-    </ViewWrapper> : <ErrorMessage title={`Projektid ${params.projectId} finns inte, prova nåt annat!`}/>}
-   <ProjectGrid/>
+    <>{project ?
+      <ViewWrapper title={project.project_name}>
+        {<TimespanSelector onChange={(newFilter: DateFilter) =>
+          dispatch(timeReportSlice.actions.setFilter(newFilter))
+        }
+          yearMonths={timeReportMeta}
+          filter={filter}
+        />}
+      </ViewWrapper> : <ErrorMessage title={`Projektid ${params.projectId} finns inte, prova nåt annat!`} />}
+      <ProjectGrid />
     </>
   );
 };

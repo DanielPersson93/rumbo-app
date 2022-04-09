@@ -1,18 +1,27 @@
-import { Pool, PoolConfig } from "pg";
+import mongoose from 'mongoose'
+import '../models/employee.model';
+import '../models/project.model';
+import '../models/timeReport.model';
+import '../models/transaction.model';
 
+export function connectToDatabase() {
 
-export const pool = new Pool({
-  ssl: false,
-});
+  const uri = 'mongodb://localhost:27017/rumbo';
+  const dbURI = process.env["DB_URL"] || uri;
 
-export const query = (query, values = null) => {
-  return new Promise((resolutionFunc, rejectionFunc) => {
-    pool.query({ text: query, values }, (err, res) => {
-      if (err) {
-        rejectionFunc(err);
-      } else {
-        resolutionFunc(res.rows);
-      }
-    });
+  mongoose
+    .connect(dbURI, {
+      serverSelectionTimeoutMS: 5000,
+    })
+    .catch((err: any) => console.log(err.reason));
+
+  mongoose.connection.on("connected", () => {
+    console.log(`Mongoose connected`);
   });
-};
+  mongoose.connection.on("error", (err: any) => {
+    console.log(`Mongoose connection error: ${err}`);
+  });
+  mongoose.connection.on("disconnected", () => {
+    console.log("Mongoose disconnected");
+  });
+}

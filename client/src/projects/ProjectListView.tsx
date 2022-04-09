@@ -1,5 +1,5 @@
 import { Pane, Table, TableRow } from "evergreen-ui";
-import { useEffect} from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { Employee, Project } from "../app/slices/appSlice";
@@ -34,7 +34,7 @@ const ProjectListView = ({ user }: ProjectViewType) => {
 
 
   //Funktion för rendera om till ProjectView 
-  const getProjectView = (id: number) => {
+  const getProjectView = (id: any) => {
 
     dispatch(push(`/project/${id}`))
   }
