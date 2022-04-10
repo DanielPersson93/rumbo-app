@@ -4,7 +4,7 @@ import '../models/project.model';
 import '../models/timeReport.model';
 import '../models/transaction.model';
 
-export function connectToDatabase() {
+export function connectToDatabase(): void {
 
   const uri = 'mongodb://localhost:27017/rumbo';
   const dbURI = process.env["DB_URL"] || uri;
