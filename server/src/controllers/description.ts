@@ -1,8 +1,4 @@
 import Transaction from "../models/transaction.model";
-// // import { query } from "./db";
-
-
-
 
 export const getDescriptionsByEmail = (email: string) => {
     const getDescription = Transaction.aggregate([
@@ -13,8 +9,4 @@ export const getDescriptionsByEmail = (email: string) => {
         }])
 
     return getDescription;
-
-
-    // const sqlQuery = `SELECT DISTINCT description FROM public.transactions WHERE email LIKE $1`;
-    // return await query(sqlQuery, [email]);
 };

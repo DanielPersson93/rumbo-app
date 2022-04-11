@@ -110,9 +110,10 @@ const timeReportSlice = createSlice({
     // standard reducer logic, with auto-generated action types per reducer
     setFilter(state, action: PayloadAction<DateFilter>) {
       const year: number = action.payload.year;
+      // TODO: I'd changed here it didnt work.
       //If you change to year where previous month is not available, set max possible month that year
       // const month = action.payload.month === 0 ? 0 : state.meta[year].indexOf(action.payload.month) > -1 ? action.payload.month : Math.max(...state.meta[year]);
-      // console.log({ year, month });
+      // console.log({ year, month })
       state.filter = { year, month: action.payload.month };
     },
 

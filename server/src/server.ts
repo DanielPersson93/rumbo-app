@@ -3,7 +3,7 @@ import auth from "./auth";
 import dotenv from "dotenv";
 // import { refreshToken } from "./eaccounting";
 // // import { getProjects } from "./db/project";
-import { getDescriptionsByEmail } from "./db/description";
+import { getDescriptionsByEmail } from "./controllers/description";
 
 import userRouter from './routes/user';
 import transactionRouter from './routes/transaction';
@@ -27,12 +27,11 @@ const app = express();
 const port = 4000;
 connectToDatabase();
 
-// app.use(auth);
+app.use(auth);
 app.use(express.json());
 // //Routers
 app.use('/user', userRouter);
 app.use('/transaction', transactionRouter);
-// app.use('/user', userRouter);
 app.use('/visma', vismaRouter);
 app.use('/', timeReportRouter);
 
@@ -41,7 +40,7 @@ app.use('/employee', employeeRouter);
 app.use('/', projectRouter);
 
 app.get('/user/:email/description', async (req, res) => {
-  if (req["isAdmin"]) {
+  if (!req["isAdmin"]) {
     res.send(401).end();
   } else {
     const response: any = await getDescriptionsByEmail(req.params.email);

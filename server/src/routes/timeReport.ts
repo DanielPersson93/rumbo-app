@@ -10,7 +10,7 @@ const router = express.Router();
 // router.delete("/:email/timereport/:timeReportId", async (req, res) => {
 
 router.get('/project/:id/timereport', (req, res) => {
-  if (req["isAdmin"]) {
+  if (!req["isAdmin"]) {
     res.sendStatus(401).end();
   }
   else {
@@ -31,7 +31,7 @@ router.get('/project/:id/timereport', (req, res) => {
 });
 
 router.get('/user/:email/timereport', (req, res) => {
-  if (req["isAdmin"]) {
+  if (!req["isAdmin"]) {
     res.sendStatus(401).end();
   }
   else {
@@ -52,7 +52,7 @@ router.get('/user/:email/timereport', (req, res) => {
 });
 
 router.delete("/:email/timereport/:timeReportId", async (req, res) => {
-  if (req.params.email != req["user"] && req["isAdmin"]) {
+  if (req.params.email != req["user"] && !req["isAdmin"]) {
     res.sendStatus(401).end();
     console.log("Loggar params", req.params);
   } else {
@@ -83,7 +83,7 @@ router.delete("/:email/timereport/:timeReportId", async (req, res) => {
 
 
 router.post("/timereport", async (req, res) => {
-  if (req.body.email != req["user"] && req["isAdmin"]) {
+  if (req.body.email != req["user"] && !req["isAdmin"]) {
     res.sendStatus(401).end();
   } else {
     const errors = validationResult(req);
@@ -107,7 +107,7 @@ router.post("/timereport", async (req, res) => {
 
 router.put("/:email/timereport/:id", async (req, res) => {
 
-  if (req.body.email != req["user"] && req["isAdmin"]) {
+  if (req.body.email != req["user"] && !req["isAdmin"]) {
     res.sendStatus(401).end();
   } else {
     const errors = validationResult(req);

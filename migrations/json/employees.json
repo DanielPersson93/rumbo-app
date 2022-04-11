@@ -1,0 +1,26 @@
+[
+    {
+        "email": "kalle.anka@gmail.com",
+        "firstname": "Kalle",
+        "lastname": "Anka",
+        "fullname": "Kalle Anka"
+    },
+    {
+        "email": "kajsa.anka@gmail.com",
+        "firstname": "Kajsa",
+        "lastname": "Anka",
+        "fullname": "Kajsa Anka"
+    },
+    {
+        "email": "Daniel@gmail.com",
+        "firstname": "Daniel",
+        "lastname": "Persson",
+        "fullname": "Daniel Persson"
+    },
+    {
+        "email": "Anton@gmail.com",
+        "firstname": "Anton",
+        "lastname": "Planebo",
+        "fullname": "Anton Planebo"
+    }
+]

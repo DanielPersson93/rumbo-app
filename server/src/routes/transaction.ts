@@ -7,7 +7,7 @@ import { addTransaction, deleteTransactionById, getTransactionById, getTransacti
 const router = express.Router();
 
 router.delete("/:transactionId", async (req, res) => {
-  if (req["isAdmin"]) {
+  if (!req["isAdmin"]) {
     res.sendStatus(401).end();
   } else {
     const transactionId = (req.params.transactionId);
@@ -47,7 +47,7 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  if (req["isAdmin"]) {
+  if (!req["isAdmin"]) {
     res.sendStatus(401).end();
   } else {
     // console.log("logged body", req.body);

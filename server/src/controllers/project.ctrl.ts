@@ -3,7 +3,7 @@ import Employee from '../models/employee.model'
 import { Request, Response } from 'express'
 
 export const getProject = async (req: Request, res: Response) => {
-    if (req['isAdmin']) {
+    if (!req['isAdmin']) {
         return res.send(401).end();
     }
     try {
